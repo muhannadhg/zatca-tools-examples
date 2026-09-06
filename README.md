@@ -11,7 +11,9 @@ Brought to you by [**ZATCA Tools**](https://zatcatools.com) — the fastest way 
 | | |
 |---|---|
 | 🌐 App | [zatcatools.com](https://zatcatools.com) |
-| 📚 API docs | [zatcatools.com/docs/api](https://zatcatools.com/docs/api) |
+| 📚 API docs | [zatcatools.com/docs/api](https://zatcatools.com/docs/api?utm_source=github&utm_medium=readme&utm_campaign=header) |
+| 🧪 Sandbox quickstart (no credentials needed) | [docs/zatca-sandbox-quickstart.md](docs/zatca-sandbox-quickstart.md) |
+| 🚫 Rejection codes cheat sheet | [docs/zatca-error-codes-cheatsheet.md](docs/zatca-error-codes-cheatsheet.md) |
 | ✍️ Blog (Arabic guides) | [zatcatools.com/blog](https://zatcatools.com/blog) |
 
 ---
@@ -27,7 +29,7 @@ curl -X POST https://zatcatools.com/api/v1/invoices \
   -d '{"type":"simplified","lines":[{"name":"Consulting service","quantity":1,"unit_price":500}]}'
 ```
 
-> 🔑 **Getting an API key**: [sign up free](https://zatcatools.com/start) → complete Fatoora onboarding → Settings → API tab → *Generate key*.
+> 🔑 **Getting an API key**: [sign up free](https://zatcatools.com/start?utm_source=github&utm_medium=readme&utm_campaign=quickstart) → complete Fatoora onboarding → Settings → API tab → *Generate key*.
 
 ## 📦 What's inside
 
@@ -53,6 +55,18 @@ Standalone utilities, useful even if you don't use our platform:
 | [`qr-tlv-decoder`](tools/qr-tlv-decoder/) | Decode any Saudi invoice QR code (base64 TLV → readable fields, Phase 1 & 2 tags) |
 | [`qr-tlv-generator`](tools/qr-tlv-generator/) | Generate a Phase-1-compliant TLV QR payload |
 | [`vat-validator`](tools/vat-validator/) | Validate a Saudi VAT registration number (15 digits, format rules) |
+
+## Common questions (short answers)
+
+**Do I need anything from ZATCA to start testing?** No. The developer sandbox accepts any well-formed CSR with the fixed OTP `123345` and validates invoices for the test VAT `399999999900003`. Step-by-step: [docs/zatca-sandbox-quickstart.md](docs/zatca-sandbox-quickstart.md).
+
+**Sandbox vs simulation vs production?** Three base URLs under `gw-fatoora.zatca.gov.sa/e-invoicing/` — `developer-portal`, `simulation`, `core` — with three CSR template names and separate OTPs. An OTP is valid in one environment only, once, for one hour.
+
+**Is there a free ZATCA e-invoicing API?** Yes: [ZATCA Tools](https://zatcatools.com/docs/api?utm_source=github&utm_medium=readme&utm_campaign=faq) signs (XAdES), chains (ICV/PIH), reports/clears and returns QR + XML + PDF from one JSON call. First 50 invoices free, no card; a trial mode runs on ZATCA's sandbox with no VAT number or OTP.
+
+**Which rejection codes are most common?** `BR-KSA-26`/`61` (PIH), `BR-KSA-33` (ICV), `BR-KSA-09`/`66` (address and postal code), `BR-KSA-04` (timezone), `BR-KSA-F-04` (negative lines), `BR-KSA-EN16931-09` (tax total with a tax currency). One-line fixes for twenty codes: [docs/zatca-error-codes-cheatsheet.md](docs/zatca-error-codes-cheatsheet.md).
+
+**Does it plug into an existing store or workflow?** Yes — [WooCommerce plugin](https://zatcatools.com/docs/woocommerce?utm_source=github&utm_medium=readme&utm_campaign=faq), [Shopify app](https://zatcatools.com/shopify?utm_source=github&utm_medium=readme&utm_campaign=faq), [n8n community node](https://zatcatools.com/tools/n8n?utm_source=github&utm_medium=readme&utm_campaign=faq), and the REST API for anything else.
 
 ## Why ZATCA Tools?
 
