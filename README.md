@@ -14,6 +14,7 @@ Brought to you by [**ZATCA Tools**](https://zatcatools.com) — the fastest way 
 | 📚 API docs | [zatcatools.com/docs/api](https://zatcatools.com/docs/api?utm_source=github&utm_medium=readme&utm_campaign=header) |
 | 🧪 Sandbox quickstart (no credentials needed) | [docs/zatca-sandbox-quickstart.md](docs/zatca-sandbox-quickstart.md) |
 | 🚫 Rejection codes cheat sheet | [docs/zatca-error-codes-cheatsheet.md](docs/zatca-error-codes-cheatsheet.md) |
+| 🗂️ Validation rules dataset (135 codes, JSON/CSV) | [data/](data/) |
 | ✍️ Blog (Arabic guides) | [zatcatools.com/blog](https://zatcatools.com/blog) |
 
 ---

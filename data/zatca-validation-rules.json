@@ -1,0 +1,823 @@
+{
+  "source": {
+    "name": "ZATCA e-Invoicing SDK — compiled validation schematron",
+    "file": "20210819_ZATCA_E-invoice_Validation_Rules.xsl",
+    "sdk": "Java 238 R3.3.9",
+    "licence": "GNU LGPL v3 (ZATCA toolkit)",
+    "extracted": "2026-07-30",
+    "note": "Messages are ZATCA's own English text, kept verbatim. flag is the severity the schematron assigns: error rejects the invoice, warning is returned alongside acceptance."
+  },
+  "count": 135,
+  "rules": [
+    {
+      "code": "BR-CL-KSA-14",
+      "severity": "error",
+      "message": "Field character limit for QR Code field has been exceeded. The maximum character limit for this field is 1000 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-cl-ksa-14"
+    },
+    {
+      "code": "BR-CUSTOM-VALIDATION-01",
+      "severity": "error",
+      "message": "The Seller VAT registration number or seller group VAT registration number (BT-31) of The invoice must not match the buyer VAT registration number (BT-48) .",
+      "guide": "https://zatcatools.com/docs/errors/br-custom-validation-01?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    },
+    {
+      "code": "BR-KSA-03",
+      "severity": "error",
+      "message": "The invoice must contain a unique identifier (\"UUID\") (KSA-1) given by the unit that issued the document (unique message identifier for interchange process). This value must contain only letters, digits, and dashes.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-03"
+    },
+    {
+      "code": "BR-KSA-04",
+      "severity": "error",
+      "message": "The document issue date (BT-2) must be less or equal to the current date.",
+      "guide": "https://zatcatools.com/docs/errors/br-ksa-04?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    },
+    {
+      "code": "BR-KSA-05",
+      "severity": "error",
+      "message": "The invoice type code (BT-3) must be equal to one of value from the subset of UN/CEFACT code list 1001, D.16B agreed for KSA electronic invoices. Please refer paragraph 11.2.1 of XML implementation Standards.",
+      "guide": "https://zatcatools.com/docs/errors/br-ksa-05?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    },
+    {
+      "code": "BR-KSA-06",
+      "severity": "error",
+      "message": "The invoice transaction code (KSA-2) must exist and respect the following structure: NNPNESB where NN (positions 1 and 2) = invoice subtype: - 01 for tax invoice - 02 for simplified tax invoice P (position 3) = 3rd Party invoice transaction, 0 for false, 1 for true N (position 4) = Nominal invoice transaction, 0 for false, 1 for true E (position 5) = Exports invoice transaction, 0 for false, 1 for true S (position 6) = Summary invoice transaction, 0 for false, 1 for true B (position 7) = Self billed invoice",
+      "guide": "https://zatcatools.com/docs/errors/br-ksa-06?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    },
+    {
+      "code": "BR-KSA-07",
+      "severity": "error",
+      "message": "Self billing is not allowed (KSA-2, position 7 cannot be \"1\") for export invoices (KSA-2, position 5 = 1).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-07"
+    },
+    {
+      "code": "BR-KSA-08",
+      "severity": "warning",
+      "message": "The seller identification (BT-29) must exist only once with one of the scheme ID (BT-29-1) (CRN, MOM, MLS, SAG, OTH, 700) and must contain only alphanumeric characters. Commercial Registration number with \"CRN\" as schemeID. MOMRAH license with \"MOM\" as schemeID. MHRSD license with \"MLS\" as schemeID. 700 Number with \"700\" as schemeID. MISA license with \"SAG\" as schemeID. Other OD with \"OTH\" as schemeID. In case of multiple commercial registrations, the seller should fill the commercial registration of the branch in respect of which the Tax Invoice is being issued. In case multiple IDs exist then one of the above must be entered following the sequence specified above.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-08"
+    },
+    {
+      "code": "BR-KSA-09",
+      "severity": "warning",
+      "message": "Seller address must contain street name (BT-35), building number (KSA-17), postal code (BT-38), city (BT-37), district (KSA-3), country code (BT-40). For more information please access this link: https://splonline.com.sa/en/national-address-1/",
+      "guide": "https://zatcatools.com/docs/errors/br-ksa-09?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    },
+    {
+      "code": "BR-KSA-10",
+      "severity": "warning",
+      "message": "Buyer address must contain a street (BT-50), city (BT-52), country code (BT-55). This rule does not apply on the simplified tax invoices and associated credit notes and debit notes (KSA-2, position 1 and 2 = 02).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-10"
+    },
+    {
+      "code": "BR-KSA-11",
+      "severity": "error",
+      "message": "An Invoice line (BG-25) where the VAT category code (BT-151) is \"Not subject to VAT\", an invoiced item VAT rate (BT-152) shall be 0 (zero), if exist.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-11"
+    },
+    {
+      "code": "BR-KSA-12",
+      "severity": "warning",
+      "message": "A Document level allowance (BG-20) where VAT category code (BT-95) is \"Not subject to VAT\", a Document level allowance VAT rate (BT-96) shall be 0 (Zero), if exist.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-12"
+    },
+    {
+      "code": "BR-KSA-13",
+      "severity": "warning",
+      "message": "A Document level charge (BG-21) where the VAT category code (BT-102) is \"Not subject to VAT\", a Document level charge VAT rate (BT-103) shall be 0 (zero), if exist.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-13"
+    },
+    {
+      "code": "BR-KSA-14",
+      "severity": "error",
+      "message": "The buyer identification (BT-46), required only if buyer is not VAT registered, then the buyer identification (BT-46) must be provided with one of the scheme IDs (BT-46-1) (TIN, CRN, MOM, MLS, 700, SAG, NAT, GCC, IQA, OTH) and must contain only alphanumeric characters. Tax Identification Number \"TIN\" as schemeID ;Commercial registration number with \"CRN\" as schemeID ;MOMRAH license with \"MOM\" as schemeID ;MHRSD license with \"MLS\" as schemeID ;700 Number with \"700\" as schemeID ;MISA license with \"SAG\" as schemeID ;National ID with \"NAT\" as schemeID ;GCC ID with \"GCC\" as schemeID ;Iqama Number with \"IQA\" as schemeID ;Passport ID with \"PAS\" as schemeID ;Other ID with \"OTH\" as schemeID. ;In case of multiple commercial registrations, the seller should fill the commercial registration of the branch in respect of which the Tax Invoice is being issued. In case multiple IDs exist then one of the above must be entered following the sequence specified above",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-14"
+    },
+    {
+      "code": "BR-KSA-15",
+      "severity": "warning",
+      "message": "The tax invoice ((invoice type code (BT-30) = 388) and (invoice transaction code (KSA-2) has \"01\" as first 2 digits)) must contain the supply date (KSA-5).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-15"
+    },
+    {
+      "code": "BR-KSA-16",
+      "severity": "warning",
+      "message": "Payment means code (BT-81) in an invoice exist, then it must contain one of the values from subset of UNTDID 4461 code list",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-16"
+    },
+    {
+      "code": "BR-KSA-17",
+      "severity": "error",
+      "message": "Debit and credit note (invoice type code (BT-3) is equal to 383 or 381) must contain the reason (KSA-10) for this invoice type issuing.",
+      "guide": "https://zatcatools.com/docs/errors/br-ksa-17?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    },
+    {
+      "code": "BR-KSA-18",
+      "severity": "error",
+      "message": "VAT category code must contain one of the values (S, Z, E, O).",
+      "guide": "https://zatcatools.com/docs/errors/br-ksa-18?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    },
+    {
+      "code": "BR-KSA-19",
+      "severity": "warning",
+      "message": "Each Document level charge (BG-21) shall have a code for the reason for document level charge (BT-105).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-19"
+    },
+    {
+      "code": "BR-KSA-20",
+      "severity": "warning",
+      "message": "Each Invoice line charge (BG-28) shall have a code for the reason for invoice line charge (BT-145).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-20"
+    },
+    {
+      "code": "BR-KSA-21",
+      "severity": "warning",
+      "message": "Each Document level charge (BG-21) shall have a Reason for document level charge (BT-104).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-21"
+    },
+    {
+      "code": "BR-KSA-22",
+      "severity": "warning",
+      "message": "Each Invoice line charge (BG-28) shall have a Reason for invoice line charge (BT-144).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-22"
+    },
+    {
+      "code": "BR-KSA-23",
+      "severity": "warning",
+      "message": "A VAT breakdown (BG-23) with VAT Category code (BT-118) 'Exempt from VAT' shall have a VAT exemption reason code (BT-121).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-23"
+    },
+    {
+      "code": "BR-KSA-24",
+      "severity": "warning",
+      "message": "A VAT breakdown (BG-23) with VAT Category code (BT-118) 'Not subject to VAT' shall have a VAT exception reason code (BT-121)",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-24"
+    },
+    {
+      "code": "BR-KSA-25",
+      "severity": "warning",
+      "message": "If it is a simplified tax invoice or an associated credit note or a debit note (KSA-2, position 1 and 2 = 02) and the tax exemption reason code (BT-121) is equal with VATEX-SA-EDU or VATEX-SA-HEA, then buyer name (BT-44) is mandatory.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-25"
+    },
+    {
+      "code": "BR-KSA-26",
+      "severity": "warning",
+      "message": "If the invoice contains the previous invoice hash (KSA-13), this hash must be base64 encoded SHA256. The hash shall be computed using the following method as described in the ds:transforms block in the XML Invoice Specifications: 1. Remove the <Invoice><ext:UBLExtensions/> block 2. Remove the <Invoice><cac:AdditionalDocumentReference/> block where <cbc:ID/> = QR 3. Remove the <Invoice><cac:Signature/> block 4. Canonicalize the Invoice using the C14N11 standard 5. Hash the resulting string using SHA256 to a binary object 6. Base64 encode the binary object to generate the digest value For the first invoice, the previous invoice hash is \"NWZlY2ViNjZmZmM4NmYzOGQ5NTI3ODZjNmQ2OTZjNzljMmRiYzIzOWRkNGU5MWI0NjcyOWQ3M2EyN2ZiNTdlOQ==\", the equivalent for base64 encoded SHA256 of \"0\" (zero) character.",
+      "guide": "https://zatcatools.com/docs/errors/br-ksa-26?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    },
+    {
+      "code": "BR-KSA-27",
+      "severity": "warning",
+      "message": "The document must contain a QR code (KSA-14), and this code must be base64Binary.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-27"
+    },
+    {
+      "code": "BR-KSA-28",
+      "severity": "error",
+      "message": "If the cryptographic stamp (KSA-15) exists in the invoice, this cryptographic stamp (KSA-15) must contain the exact \"urn:oasis:names:specification:ubl:signature:1\" value for signature information ID.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-28"
+    },
+    {
+      "code": "BR-KSA-29",
+      "severity": "warning",
+      "message": "If the cryptographic stamp (KSA-15) exists in the invoice, this cryptographic stamp (KSA-15) must contain the exact \"urn:oasis:names:specification:ubl:signature:Invoice\" value for referenced signature ID and signature ID.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-29"
+    },
+    {
+      "code": "BR-KSA-30",
+      "severity": "error",
+      "message": "The document cryptographic stamp (KSA-15) must contain the exact \"urn:oasis:names:specification:ubl:dsig:enveloped:xades\" value for signature method.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-30"
+    },
+    {
+      "code": "BR-KSA-31",
+      "severity": "error",
+      "message": "For simplified tax invoices and associated credit notes and debit notes (KSA-2, position 1 and 2 = 02),only the following transaction types can be \"true\": - third party (KSA-2, position 3 = 1), - nominal supply (KSA-2, position 4 = 1) and - summary transactions (KSA-2,position 6 = 1). Other transaction types (self-billing and export) are not allowed to be \"true\" for simplified tax invoices and associated credit notes and debit notes.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-31"
+    },
+    {
+      "code": "BR-KSA-33",
+      "severity": "error",
+      "message": "Each invoice must have an invoice counter value (KSA-16).",
+      "guide": "https://zatcatools.com/docs/errors/br-ksa-33?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    },
+    {
+      "code": "BR-KSA-34",
+      "severity": "error",
+      "message": "The invoice counter value (KSA-16) contains only digits.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-34"
+    },
+    {
+      "code": "BR-KSA-35",
+      "severity": "warning",
+      "message": "If the invoice contains a supply end date (KSA-24), then the invoice must contain a supply date (KSA-5).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-35"
+    },
+    {
+      "code": "BR-KSA-36",
+      "severity": "warning",
+      "message": "If the invoice contains a supply end date (KSA-24), then this date must be greater than or equal to the supply date (KSA-5).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-36"
+    },
+    {
+      "code": "BR-KSA-37",
+      "severity": "warning",
+      "message": "The seller address building number must contain 4 digits.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-37"
+    },
+    {
+      "code": "BR-KSA-39",
+      "severity": "error",
+      "message": "The invoice must contain the seller VAT registration number or seller group VAT registration number (BT-31).",
+      "guide": "https://zatcatools.com/docs/errors/br-ksa-39?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    },
+    {
+      "code": "BR-KSA-40",
+      "severity": "error",
+      "message": "If it exists in the invoice, the seller VAT registration number (BT-31) must contain 15 digits. The first and the last digits are \"3\"..",
+      "guide": "https://zatcatools.com/docs/errors/br-ksa-40?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    },
+    {
+      "code": "BR-KSA-42",
+      "severity": "warning",
+      "message": "The buyer name (BT-44) must be present in the tax invoice and associated credit notes and debit notes (KSA-2, position 1 and 2 = 01).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-42"
+    },
+    {
+      "code": "BR-KSA-44",
+      "severity": "error",
+      "message": "If it exists in the invoice,the buyer VAT registration number or buyer group VAT registration number (BT-48) must contain 15 digits. The first digit and the last digit is \"3\".",
+      "guide": "https://zatcatools.com/docs/errors/br-ksa-44?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    },
+    {
+      "code": "BR-KSA-49",
+      "severity": "error",
+      "message": "If the tax exemption reason code (BT-121) is equal to VATEX-SA-EDU or VATEX-SA-HEA, then the other buyer ID (BT-46) is mandatory and must be national ID (BT-46-1 = NAT).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-49"
+    },
+    {
+      "code": "BR-KSA-51",
+      "severity": "warning",
+      "message": "The line amount with VAT (KSA-12) must be Invoice line net amount (BT-131) + Line VAT amount (KSA-11).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-51"
+    },
+    {
+      "code": "BR-KSA-52",
+      "severity": "error",
+      "message": "The line VAT amount (KSA-11) is mandatory for tax invoice and associated credit notes and debit notes (KSA-2, position 1 and 2 = 01).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-52"
+    },
+    {
+      "code": "BR-KSA-53",
+      "severity": "error",
+      "message": "The line amount with VAT (KSA-12) is mandatory for tax invoice and associated credit notes and debit notes (KSA-2, position 1 and 2 = 01).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-53"
+    },
+    {
+      "code": "BR-KSA-56",
+      "severity": "warning",
+      "message": "For credit notes ((BT-3) has the value of 381) and debit notes ((BT-3) has the value of 383), the billing reference ID (BT-25) is mandatory.",
+      "guide": "https://zatcatools.com/docs/errors/br-ksa-56?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    },
+    {
+      "code": "BR-KSA-60",
+      "severity": "warning",
+      "message": "Cryptographic stamp (KSA-15) must exist in simplified tax invoices and associated credit notes and debit notes (KSA-2, position 1 and 2 = 02).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-60"
+    },
+    {
+      "code": "BR-KSA-61",
+      "severity": "warning",
+      "message": "Previous invoice hash (KSA-13) must exist in an invoice.",
+      "guide": "https://zatcatools.com/docs/errors/br-ksa-61?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    },
+    {
+      "code": "BR-KSA-63",
+      "severity": "warning",
+      "message": "If the buyer country code (BT-55) is \"SA\", then these fields are mandatory:street name (BT-50), building number (KSA-18), postal code (BT-53), city (BT-52), District (KSA-4), country code (BT-55).For more information please access this link:https://splonline.com.sa/en/national-address-1/",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-63"
+    },
+    {
+      "code": "BR-KSA-66",
+      "severity": "warning",
+      "message": "Seller postal code (BT-38) must be 5 digits.",
+      "guide": "https://zatcatools.com/docs/errors/br-ksa-66?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    },
+    {
+      "code": "BR-KSA-67",
+      "severity": "warning",
+      "message": "If the buyer country code (BT-55) is \"SA\", then the Buyer postal code(BT-53) must be 5 digits.",
+      "guide": "https://zatcatools.com/docs/errors/br-ksa-67?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    },
+    {
+      "code": "BR-KSA-68",
+      "severity": "error",
+      "message": "Tax currency code (BT-6) must exist in an invoice.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-68"
+    },
+    {
+      "code": "BR-KSA-69",
+      "severity": "warning",
+      "message": "A VAT breakdown (BG-23) with VAT Category code (BT-118) 'Zero rated' shall have a VAT exception reason code (BT-121).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-69"
+    },
+    {
+      "code": "BR-KSA-70",
+      "severity": "error",
+      "message": "The invoice must contain Invoice Issue Time (KSA-25). This value should be in the format: hh:mm:ss for time expressed in local time (eg 19:20:30) or hh:mm:ssZ for time expressed in UTC (eg 19:20:30Z).\"The invoice must contain Invoice Issue Time (KSA-25). This value should be in the format: hh:mm:ss for time expressed in local time (eg 19:20:30) or hh:mm:ssZ for time expressed in UTC (eg 19:20:30Z).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-70"
+    },
+    {
+      "code": "BR-KSA-71",
+      "severity": "warning",
+      "message": "If the Invoice is a simplified invoice type and is a summary invoice (KSA-2, position 1 and 2 = 02, position 6 = 1),then the buyer name must be present.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-71"
+    },
+    {
+      "code": "BR-KSA-72",
+      "severity": "error",
+      "message": "If the Invoice is a simplified invoice type and is a summary invoice (KSA-2, position 1 and 2 = 02, position 6 = 1), then a supply date (KSA-5) and supply end date (KSA-24) must be present",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-72"
+    },
+    {
+      "code": "BR-KSA-73",
+      "severity": "warning",
+      "message": "If Pre-Paid amount (BT-113) is provided, then the following data is mandatory to provide as additional invoice line(s) -Prepayment ID (KSA-26) -Sequential invoice number (BT-1) of the prepayment invoice(s)-Prepayment Issue Date (KSA-28) -Issue date (BT-2) of the prepayment invoice(s) Prepayment Issue Time (KSA-29) - Issue time (KSA-25) of the prepayment invoice(s) Prepayment Document Type Code (KSA-30)- Invoice type code (BT-3) must be 386.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-73"
+    },
+    {
+      "code": "BR-KSA-74",
+      "severity": "error",
+      "message": "Prepayment Document Type Code (KSA-30) for the Invoice line document reference must be '386'.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-74"
+    },
+    {
+      "code": "BR-KSA-75",
+      "severity": "warning",
+      "message": "If Prepayment Document Type code (KSA-30) is provided in an Invoice Line, then the following data is mandatory to provide in that invoice line - Prepayment VAT category Taxable Amount (KSA-31) - Sum total of taxable amounts subject to specific VAT Category code of the prepayment invoice(s); Prepayment VAT Category Tax Amount (KSA-32) - Sum total of tax amounts subject to specific VAT Category code of the prepayment invoice(s); Prepayment VAT category code (KSA-33) - the VAT category code of the associated Prepayment invoice(s); Prepayment VAT rate (KSA-34) - VAT rate of the specific VAT Category code of the prepayment invoice(s)",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-75"
+    },
+    {
+      "code": "BR-KSA-76",
+      "severity": "warning",
+      "message": "An Invoice line (BG-25) where the Prepayment VAT category code (KSA-33) is \"Zero rated\" the Prepayment VAT rate (KSA-34) shall be 0 (zero).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-76"
+    },
+    {
+      "code": "BR-KSA-77",
+      "severity": "warning",
+      "message": "An Invoice line (BG-25) where the Prepayment VAT category code (KSA-33) is \"Exempt from VAT\" the Prepayment VAT rate (KSA-34) shall be 0 (zero).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-77"
+    },
+    {
+      "code": "BR-KSA-78",
+      "severity": "warning",
+      "message": "An Invoice line (BG-25) where the Prepayment VAT category code (KSA-33) is \"Not subject to VAT\" the Prepayment VAT rate (KSA-34) shall be 0 (zero).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-78"
+    },
+    {
+      "code": "BR-KSA-79",
+      "severity": "warning",
+      "message": "The Prepayment VAT Category Tax Amount (KSA-32) must be Prepayment VAT category Taxable Amount( (KSA-31) x Prepayment VAT rate (KSA-34) /100).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-79"
+    },
+    {
+      "code": "BR-KSA-80",
+      "severity": "warning",
+      "message": "The Pre-Paid amount (BT-113) must be equal to the sum total of the Prepayment VAT category Taxable Amount (KSA-31) and the Prepayment VAT Category Tax Amount (KSA-32).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-80"
+    },
+    {
+      "code": "BR-KSA-81",
+      "severity": "warning",
+      "message": "The other Buyer ID (BT-46) must present in the tax invoice and associated debit notes and credit notes (KSA-2, position 1 and 2 = 01), where the buyer VAT registration number or buyer group VAT registration number (BT-48) is not provided.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-81"
+    },
+    {
+      "code": "BR-KSA-82",
+      "severity": "error",
+      "message": "An Invoice line (BG-25) where Prepayment Document Type Code (KSA-30) is provided, then Item net price (BT-146); Invoice line allowance amount (BT-136); Invoice line charge amount (BT-141); Item line net amount (BT-131); line VAT amount (KSA-11); and line amount with VAT (KSA-12) for that line shall be 0 (Zero), if exist.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-82"
+    },
+    {
+      "code": "BR-KSA-83",
+      "severity": "warning",
+      "message": "A VAT breakdown (BG-23) with VAT Category code (BT-118) 'Exempt from VAT' or 'Zero rated' or 'Not subject to VAT' shall have a VAT exemption (or exception) reason text (BT-120) with one of the values from paragraph 11.2.4 of XML implementation standards on Tax exemption (or exception) reason text - specific to Saudi Arabia.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-83"
+    },
+    {
+      "code": "BR-KSA-84",
+      "severity": "error",
+      "message": "The Document level allowance VAT rate (BT-96), Document level Charge VAT rate (BT-103), VAT category rate(BT-119), Invoiced item VAT rate (BT-152), Prepayment VAT rate(KSA-34) must be limited to one of the following values (5 or 15) when the relevant Document level allowance VAT category code (BT-95), Document level Charge VAT category code(BT-102), VAT category code(BT-118), Invoiced item VAT category code(BT-151), Prepayment VAT Category Code (KSA-33) is \"S\"- \"Standard rated\". In other words, for Standard Rate VAT Category the rate can either be 15% or 5%.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-84"
+    },
+    {
+      "code": "BR-KSA-85",
+      "severity": "warning",
+      "message": "The Buyer's contact phone number (BT-57) shall start with \"0\" or \"+\", followed by a maximum of 15 number and minimum 4 character after the \"+\" or \"0\" , if exist.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-85"
+    },
+    {
+      "code": "BR-KSA-86",
+      "severity": "warning",
+      "message": "Buyer's Contact Email Address (BT-58) shall follow the following format ** XXX@YYY.ZZ where: The [XXX] should consist of alphanumeric characters (a-z, A-Z, 0-9), dots ('.'), underscores ('_'), or hyphens ('-'). It must start and end with an alphanumeric character. The [YYY] should consist of alphanumeric characters (a-z, A-Z, 0-9), hyphens ('-'), and dots ('.'). It must start and end with an alphanumeric character. The [ZZ] should be a valid extension with a maximum 3 and a minimum 2 alphabets (a-z, A-Z), If exist. Multiple emails can be provided using semicolon ';' separator.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-86"
+    },
+    {
+      "code": "BR-KSA-87",
+      "severity": "warning",
+      "message": "If the tax exchange rate (KSA-36) exists, then Source Currency Code (KSA-37), Target Currency Code (KSA-38) and Calculation Rate (KSA-39) shall be provided",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-87"
+    },
+    {
+      "code": "BR-KSA-88",
+      "severity": "error",
+      "message": "If exist, Source Currency Code (KSA-37) must be the same as Invoice currency code (BT-5)",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-88"
+    },
+    {
+      "code": "BR-KSA-89",
+      "severity": "error",
+      "message": "If exists, Target Currency Code (KSA-38) must be the same as the Tax currency code (BT-6)",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-89"
+    },
+    {
+      "code": "BR-KSA-90",
+      "severity": "error",
+      "message": "If exists, the allowed maximum number of digits for the Tax Exchange Rate (KSA-39) is 14.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-90"
+    },
+    {
+      "code": "BR-KSA-91",
+      "severity": "warning",
+      "message": "For B2G supplies attracting provisions of Article 20(5) of VAT Regulations, Company Legal Form (KSA-40) should be provided with a static value \"GOV\" in case of a tax invoice and associated credit notes and debit notes (KSA-2, position 1 and 2 = 01).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-91"
+    },
+    {
+      "code": "BR-KSA-92",
+      "severity": "warning",
+      "message": "If the Company Legal Form (KSA-40) is provided as 'GOV', then the Tax Point Date (BT-7) must present in a tax invoice and associated credit notes and debit notes (KSA-2, position 1 and 2 = 01) and it must refer to the Payment Order Date.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-92"
+    },
+    {
+      "code": "BR-KSA-93",
+      "severity": "warning",
+      "message": "An Invoice line (BG-25) where the Prepayment VAT category code (KSA-33) is \"Zero-rated\" the Prepayment VAT exception reason code (KSA-41) should be provided.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-93"
+    },
+    {
+      "code": "BR-KSA-94",
+      "severity": "warning",
+      "message": "An Invoice line (BG-25) where the Prepayment VAT category code (KSA-33) is \" Exempt from VAT \" the Prepayment VAT exemption reason code (KSA-41) should be provided.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-94"
+    },
+    {
+      "code": "BR-KSA-95",
+      "severity": "warning",
+      "message": "An Invoice line (BG-25) where the Prepayment VAT category code (KSA-33) is \" Not subject to VAT \" the Prepayment VAT exception reason code (KSA-41) should be provided.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-95"
+    },
+    {
+      "code": "BR-KSA-96",
+      "severity": "warning",
+      "message": "An Invoice line (BG-25) with the Prepayment VAT category code (KSA-33) 'Exempt from VAT' or 'Zero rated' or 'Not subject to VAT' shall have a Prepayment VAT exemption(or exception) reason text (KSA-42) with one of the values from paragraph 11.2.4 of XML implementation standards on Tax exemption (or exception) reason text - specific to Saudi Arabia.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-96"
+    },
+    {
+      "code": "BR-KSA-97",
+      "severity": "warning",
+      "message": "If the Document Currency Code (BT-5) is different from \"SAR\", then the value in \"Invoice total VAT amount (BT-110)\" cannot be the same as the value in \"Invoice total VAT amount in accounting currency (BT-111)\".",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-97"
+    },
+    {
+      "code": "BR-KSA-CL-01",
+      "severity": "error",
+      "message": "Currency code (BT-5) must be according to ISO 4217:2005",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-cl-01"
+    },
+    {
+      "code": "BR-KSA-CL-02",
+      "severity": "error",
+      "message": "All currencyID attributes (BT-5) must have the same value as the invoice currency code (BT-5), except for the invoice total VAT amount in accounting currency (BT-111).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-cl-02"
+    },
+    {
+      "code": "BR-KSA-CL-03",
+      "severity": "error",
+      "message": "Mime code must be according to subset of IANA code list.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-cl-03"
+    },
+    {
+      "code": "BR-KSA-CL-04",
+      "severity": "warning",
+      "message": "If VAT category Code (BT-118) is 'Z', or 'E', VAT exemption (or exception) reason code (BT-121) must exist with one of the values from paragraph 11.2.4 of XML implementation standards on Tax exemption (or exception) reason code - specific to Saudi Arabia.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-cl-04"
+    },
+    {
+      "code": "BR-KSA-CL-06",
+      "severity": "warning",
+      "message": "Code for the reason for document level charge (BT-105) and the code for the reason for invoice line charge (BT-145) MUST be coded using UNTDID 7161 code list. https://unece.org/fileadmin/DAM/trade/untdid/d16b/tred/tred7161.htm",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-cl-06"
+    },
+    {
+      "code": "BR-KSA-CL-07",
+      "severity": "warning",
+      "message": "If the Prepayment VAT Category Code(KSA-33) is 'Z', or 'E' or 'O', the Prepayment VAT exemption (or exception) reason code(KSA-41) must exist with one of the values from paragraph 11.2.4 of XML implementation standards on Tax exemption (or exception) reason code - specific to Saudi Arabia.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-cl-07"
+    },
+    {
+      "code": "BR-KSA-DEC-01",
+      "severity": "error",
+      "message": "The allowance percentage values (BT-94, BT-138) must be from 0.00 to 100.00, with maximum two decimal places. Only numerals are accepted, the percentage symbol (%) is not allowed.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-dec-01"
+    },
+    {
+      "code": "BR-KSA-DEC-02",
+      "severity": "error",
+      "message": "The VAT rates (BT-96, BT-103, BT-119, BT-152, KSA-34) must be from 0.00 to 100.00, with maximum two decimals.Only numerals are accepted, the percentage symbol (%) is not allowed.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-dec-02"
+    },
+    {
+      "code": "BR-KSA-DEC-03",
+      "severity": "warning",
+      "message": "VAT amount at line level (KSA-11) must have a maximum two decimals.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-dec-03"
+    },
+    {
+      "code": "BR-KSA-DEC-04",
+      "severity": "warning",
+      "message": "Amount with VAT at line level (KSA-12) must have a maximum two decimals.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-dec-04"
+    },
+    {
+      "code": "BR-KSA-DEC-06",
+      "severity": "warning",
+      "message": "Prepayment VAT category Taxable Amount (KSA-31) and Prepayment VAT Category Tax Amount (KSA-32) must have a maximum two decimals.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-dec-06"
+    },
+    {
+      "code": "BR-KSA-EN16931-01",
+      "severity": "error",
+      "message": "Business process (BT-23) must be \"reporting:1.0\".",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-en16931-01"
+    },
+    {
+      "code": "BR-KSA-EN16931-02",
+      "severity": "error",
+      "message": "VAT accounting currency code (BT-6) must be \"SAR\".",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-en16931-02"
+    },
+    {
+      "code": "BR-KSA-EN16931-03",
+      "severity": "warning",
+      "message": "Allowance/Charge amount (BT-92, BT-99, BT-136, BT-141) must equal base amount (BT-93, BT-100, BT-137, BT-142) * percentage (BT-94, BT-101, BT-138, BT-143) / 100 if base amount and percentage exists.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-en16931-03"
+    },
+    {
+      "code": "BR-KSA-EN16931-04",
+      "severity": "warning",
+      "message": "Allowance/Charge base amount (BT-93, BT-100, BT-137, BT-142) must be provided when allowance/Charge percentage (BT-94, BT-101,BT-138, BT-143) is provided.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-en16931-04"
+    },
+    {
+      "code": "BR-KSA-EN16931-05",
+      "severity": "warning",
+      "message": "Allowance/Charge percentage (BT-94, BT-101, BT-138, BT-143) must be provided when the allowance/Charge base amount (BT-93, BT-100, BT-137, BT-142) is provided.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-en16931-05"
+    },
+    {
+      "code": "BR-KSA-EN16931-06",
+      "severity": "error",
+      "message": "Charge on price level (BG-29) is allowed. The value of Indicator should be ' True'.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-en16931-06"
+    },
+    {
+      "code": "BR-KSA-EN16931-07",
+      "severity": "error",
+      "message": "Item net price (BT-146) must equal (Item Gross price (BT-148) - Allowance amount (BT-147)) when gross price is provided.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-en16931-07"
+    },
+    {
+      "code": "BR-KSA-EN16931-08",
+      "severity": "warning",
+      "message": "Only one tax total (BG-22) with tax subtotals must be provided.Refer to Calculation of VAT.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-en16931-08"
+    },
+    {
+      "code": "BR-KSA-EN16931-09",
+      "severity": "warning",
+      "message": "Only one tax total (BG-22) without tax subtotals (BG-23) must be provided when tax currency code is provided .",
+      "guide": "https://zatcatools.com/docs/errors/br-ksa-en16931-09?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    },
+    {
+      "code": "BR-KSA-EN16931-11",
+      "severity": "warning",
+      "message": "Invoice line net amount (BT-131) must equal (Invoiced quantity (BT-129) * (Item net price (BT-146) / item price base quantity (BT-149))-) + Sum of invoice line charge amount (BT-141) - Sum of invoice line allowance amount (BT-136).",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-en16931-11"
+    },
+    {
+      "code": "BR-KSA-EN16931-12",
+      "severity": "error",
+      "message": "Base quantity (BT-149) must be a positive number above zero.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-en16931-12"
+    },
+    {
+      "code": "BR-KSA-F-01",
+      "severity": "warning",
+      "message": "A date MUST be formatted YYYY-MM-DD, in accordance to the \"Calendar date complete representation\" as specified by ISO 8601:2004, format YYYY-MM-DD.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-01"
+    },
+    {
+      "code": "BR-KSA-F-02",
+      "severity": "error",
+      "message": "Allowance/Charge Indicator value MUST equal to 'false'/’True’ respectively.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-02"
+    },
+    {
+      "code": "BR-KSA-F-04",
+      "severity": "error",
+      "message": "All the document amounts and quantities must be positive, unless specified otherwise.",
+      "guide": "https://zatcatools.com/docs/errors/br-ksa-f-04?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    },
+    {
+      "code": "BR-KSA-F-05",
+      "severity": "warning",
+      "message": "Prepayment Issue Time (KSA-29) must be in the format: hh:mm:ss for time expressed in local time or hh:mm:ssZ for time expressed in UTC.(eg 19:20:30)",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-05"
+    },
+    {
+      "code": "BR-KSA-F-06-C11",
+      "severity": "warning",
+      "message": "Field character limits for the Buyer Address - Additional street field (BT-51) have not been met. The maximum limit is 127 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c11"
+    },
+    {
+      "code": "BR-KSA-F-06-C12",
+      "severity": "warning",
+      "message": "Field character limits for Buyer name field (BT-44) have not been met. The minimum limit is 1 character and the maximum limit is 1000 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c12"
+    },
+    {
+      "code": "BR-KSA-F-06-C13",
+      "severity": "warning",
+      "message": "Field character limits for Reasons for issuance of credit / debit note field (KSA-10) have not been met. The minimum limit is 1 character and the maximum limit is 1000 characters .",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c13"
+    },
+    {
+      "code": "BR-KSA-F-06-C14",
+      "severity": "warning",
+      "message": "Field character limits for Payment terms field (KSA-22) have not been met. The maximum limit is 1000 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c14"
+    },
+    {
+      "code": "BR-KSA-F-06-C15",
+      "severity": "warning",
+      "message": "Field character limits for Payment account identifier field (BT-84) have not been met. The maximum limit is 127 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c15"
+    },
+    {
+      "code": "BR-KSA-F-06-C16",
+      "severity": "warning",
+      "message": "Field character limits for VAT exemption reason text field (BT-120) have not been met. The minimum limit is 1 character and the maximum limit is 1000 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c16"
+    },
+    {
+      "code": "BR-KSA-F-06-C21",
+      "severity": "warning",
+      "message": "Field character limits for Item price base quantity unit code field (BT-150) have not been met. The maximum limit is 127 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c21"
+    },
+    {
+      "code": "BR-KSA-F-06-C22",
+      "severity": "error",
+      "message": "Field character limits for Billing reference ID field (BT-25) have not been met. The minimum limit is 1 character and the maximum limit is 5000 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c22"
+    },
+    {
+      "code": "BR-KSA-F-06-C23",
+      "severity": "warning",
+      "message": "Field character limits for the Buyer Address - Street field (BT-50) have not been met. The minimum limit is 1 character and the maximum limit is 1000 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c23"
+    },
+    {
+      "code": "BR-KSA-F-06-C24",
+      "severity": "warning",
+      "message": "Field character limits for the Buyer Address - Street field (BT-50) have not been met. The maximum limit is 1000 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c24"
+    },
+    {
+      "code": "BR-KSA-F-06-C25",
+      "severity": "warning",
+      "message": "Field character limits for the Buyer Address - City field (BT-52) have not been met. The minimum limit is 1 character and the maximum limit is 127 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c25"
+    },
+    {
+      "code": "BR-KSA-F-06-C26",
+      "severity": "warning",
+      "message": "Field character limits for the Buyer Address - City field (BT-52) have not been met. The maximum limit is 127 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c26"
+    },
+    {
+      "code": "BR-KSA-F-06-C28",
+      "severity": "warning",
+      "message": "Field character limits for the Buyer Address - District field (KSA-4) have not been met. The minimum limit is 1 character and the maximum limit is 127 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c28"
+    },
+    {
+      "code": "BR-KSA-F-06-C29",
+      "severity": "warning",
+      "message": "Field character limits for the Buyer Address - District field (KSA-4) have not been met. The maximum limit is 127 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c29"
+    },
+    {
+      "code": "BR-KSA-F-06-C3",
+      "severity": "warning",
+      "message": "Field character limits for Purchase order ID field (BT-13) have not been met. The maximum limit is 127 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c3"
+    },
+    {
+      "code": "BR-KSA-F-06-C32",
+      "severity": "warning",
+      "message": "Field character limits for Buyer name field (BT-44) have not been met. The maximum limit is 1000 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c32"
+    },
+    {
+      "code": "BR-KSA-F-06-C33",
+      "severity": "warning",
+      "message": "Field character limits for Reason for the document level charge (BT-104) have not been met. The maximum limit is 1,000 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c33"
+    },
+    {
+      "code": "BR-KSA-F-06-C34",
+      "severity": "warning",
+      "message": "Field character limits for Reason for invoice line charge (BT-144) have not been met. The maximum limit is 1,000 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c34"
+    },
+    {
+      "code": "BR-KSA-F-06-C35",
+      "severity": "warning",
+      "message": "Field character limits for Reason for the document level allowance (BT-97) have not been met. The maximum limit is 1,000 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c35"
+    },
+    {
+      "code": "BR-KSA-F-06-C36",
+      "severity": "warning",
+      "message": "Field character limits for Reason for the invoice line allowance (BT-139) have not been met. The maximum limit is 1,000 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c36"
+    },
+    {
+      "code": "BR-KSA-F-06-C37",
+      "severity": "warning",
+      "message": "Field character limits for the contact name - Buyer's contact point field (BT-56) have not been met. The maximum limit is 1000 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c37"
+    },
+    {
+      "code": "BR-KSA-F-06-C38",
+      "severity": "warning",
+      "message": "Field character limits for the contact note - Buyer's Contact Note field (KSA-35) have not been met. The maximum limit is 1000 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c38"
+    },
+    {
+      "code": "BR-KSA-F-06-C39",
+      "severity": "warning",
+      "message": "Field character limits for the Prepayment VAT exemption reason text (KSA-42) have not been met. The maximum limit is 1000 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c39"
+    },
+    {
+      "code": "BR-KSA-F-06-C4",
+      "severity": "warning",
+      "message": "Field character limits for the Seller Address - Street field (BT-35) have not been met. The minimum limit is 1 character and the maximum limit is 1000 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c4"
+    },
+    {
+      "code": "BR-KSA-F-06-C5",
+      "severity": "warning",
+      "message": "Field character limits for Contract ID field (BT-12) have not been met. The maximum limit is 127 characters .",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c5"
+    },
+    {
+      "code": "BR-KSA-F-06-C6",
+      "severity": "warning",
+      "message": "Field character limits for the Seller Address - Additional street field (BT-36) have not been met. The maximum limit is 127 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c6"
+    },
+    {
+      "code": "BR-KSA-F-06-C7",
+      "severity": "warning",
+      "message": "Field character limits for the Seller Address - City field (BT-37) have not been met. The minimum limit is 1 character and the maximum limit is 127 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c7"
+    },
+    {
+      "code": "BR-KSA-F-06-C9",
+      "severity": "warning",
+      "message": "Field character limits for the Seller Address - District field (KSA-3) have not been met. The minimum limit is 1 character and the maximum limit is 127 characters.",
+      "guide": "https://zatcatools.com/docs/errors?utm_source=github&utm_medium=dataset&utm_campaign=rules#br-ksa-f-06-c9"
+    },
+    {
+      "code": "BR-KSA-F-13",
+      "severity": "warning",
+      "message": "Please recheck Other Seller/Buyer ID (BT-29 or BT-46) as it contains an invalid value.",
+      "guide": "https://zatcatools.com/docs/errors/br-ksa-f-13?utm_source=github&utm_medium=dataset&utm_campaign=rules"
+    }
+  ]
+}
